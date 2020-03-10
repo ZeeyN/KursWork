@@ -9,20 +9,14 @@ class PostController extends Post
     /**
      * @return array
      */
-    public function getTopLine()
+    public function formatOutput()
     {
-        $rawPosts = $this->getData();
-        $outPosts = [];
-
-        foreach ($rawPosts as $rawPost) {
-            if($rawPost->parent_id === NULL) {
-                $outPosts[$rawPost->id] = $this->getLineData($rawPost);
-            }
-        }
-
-        return $outPosts;
+//        $rawPosts = $this->getData();
+        return $this->getData();
 
     }
+
+
 
     public function getPostChilds($postId)
     {
