@@ -1,0 +1,15 @@
+{
+    "name": "zeeyn/rusakov_kurs",
+    "authors": [
+        {
+            "name": "ZeeyN",
+            "email": "zeeynnik@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ZeeyN\\Core\\" : "core"
+        }
+    }
+}
