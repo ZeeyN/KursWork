@@ -1,8 +1,7 @@
 <?php
 
 namespace ZeeyN\Core\Models;
-include 'core/inc.php';
-
+use ZeeyN\Core\Includes;
 
 class Post
 {
@@ -33,16 +32,44 @@ class Post
 //        ];
 //    }
 
+//todo Сделать CRUD с добавлением в базу
+//todo Сделать вывод древа сообщений (parent_id !== NULL)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * @return array
      */
     public function getData ()
     {
-        $database = get_database();
+        $database = Includes::get_database();
         $sql = "SELECT * FROM posts";
         $result = $database->query($sql);
 
         $data = $this->parseResult($result);
+
 
         return $data;
     }
@@ -74,6 +101,10 @@ class Post
         return array_key_exists($attribute, $objectProps);
     }
 
+    /**
+     * @param $result
+     * @return array
+     */
     private function parseResult($result)
     {
         $data = [];
