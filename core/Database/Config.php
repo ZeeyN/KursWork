@@ -5,7 +5,7 @@ namespace ZeeyN\Core\Database;
 trait Config
 {
     private $DB_USERNAME = 'root';
-    private $DB_PASSWORD = '';
+    private $DB_PASSWORD = 'password';
     private $DB_NAME = 'forum_pechersk';
     private $DB_HOST = 'localhost';
 

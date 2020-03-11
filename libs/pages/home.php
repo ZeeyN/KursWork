@@ -1,3 +1,10 @@
+<?php
+require_once('vendor/autoload.php');
+
+use ZeeyN\Core\Includes;
+$post = Includes::get_post_controller();
+
+?>
 <div class="container">
     <div class="m-page">
 
@@ -11,7 +18,7 @@
                         <?php if ($post->parent_id === null): ?>
                             <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
                                 <div class="shop-card">
-                                    <a href="post.php?id=<?= $post->id; ?>" class="shop-card__name">
+                                    <a href="show_item.php?id=<?= $post->id; ?>" class="shop-card__name">
                                         <?= $post->post_title; ?>
                                     </a>
                                     <div class="shop-card__desc">
