@@ -4,7 +4,7 @@ $lastUrl = $_SESSION['q'] = $_GET['q'];
 unset($_GET['q']);
 
 $rdi = new RecursiveDirectoryIterator('libs/pages');
-if ($lastUrl === '' || $lastUrl === 'index.php') {
+if (empty($lastUrl) || $lastUrl === 'index.php') {
     $out = 'libs/pages/home.php';
 } else {
     foreach (new RecursiveIteratorIterator($rdi) as $filePath => $obj) {
