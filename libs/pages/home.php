@@ -1,12 +1,11 @@
 <?php
-require_once('vendor/autoload.php');
 
 use ZeeyN\Core\Includes;
 $post = Includes::get_post_controller();
 
 ?>
 <div class="container">
-    <div class="m-page">
+<!--    <div class="m-page">-->
 
 
         <div class="sticker-shop">
@@ -36,5 +35,5 @@ $post = Includes::get_post_controller();
                 </div>
             </div>
         </div>
-    </div>
+<!--    </div>-->
 </div>

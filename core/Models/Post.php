@@ -57,7 +57,17 @@ class Post
 
 
 
+    public function getById($id)
+    {
+        $database = Includes::get_database();
+        $sql = "SELECT * FROM posts WHERE id='$id'";
+        $result = $database->query($sql);
 
+        $data = $this->parseResult($result);
+
+
+        return $data;
+    }
 
     /**
      * @return array

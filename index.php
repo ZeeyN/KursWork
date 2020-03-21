@@ -1,7 +1,12 @@
 <?php
 session_start();
-$lastUrl = $_SESSION['q'] = $_GET['q'];
+$lastUrl = $_GET['q'];
 unset($_GET['q']);
+//echo '<pre>';
+//var_dump($lastUrl);
+//echo '</pre>';
+require_once('vendor/autoload.php');
+
 
 $rdi = new RecursiveDirectoryIterator('libs/pages');
 if (empty($lastUrl) || $lastUrl === 'index.php') {
@@ -16,7 +21,6 @@ if (empty($lastUrl) || $lastUrl === 'index.php') {
         }
     }
 }
-
 include 'libs/incs/header.html';
 if(file_exists($out)) {
     include $out;
