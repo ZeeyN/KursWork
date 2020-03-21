@@ -21,5 +21,19 @@
 </footer>
 </div>
 <script src="libs/js/new-scripts.js?v=ee68ad59906c6f998da707b6e680052b"></script>
+<script>
+    $('#ajaxCreateItem form').on('submit', function(e){
+        e.preventDefault();
+        let frm = $(this).serialize();
+        $.ajax({
+            url:'/AjaxController.php',
+            data: frm,
+            method: 'post',
+            success: function(data) {
+                $('#ajaxCreateItem').html(data);
+            }
+        });
+    });
+</script>
 </body>
 </html>

@@ -8,6 +8,11 @@ unset($_GET['q']);
 require_once('vendor/autoload.php');
 
 
+if($lastUrl === 'AjaxController.php'){
+    include 'libs/pages/AjaxController.php';
+    exit();
+}
+
 $rdi = new RecursiveDirectoryIterator('libs/pages');
 if (empty($lastUrl) || $lastUrl === 'index.php') {
     $out = 'libs/pages/home.php';

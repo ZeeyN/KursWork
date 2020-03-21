@@ -11,8 +11,13 @@ class PostController extends Post
      */
     public function formatOutput()
     {
-//        $rawPosts = $this->getData();
-        return $this->getData();
+        $rawPosts = $this->getData();
+
+        foreach($rawPosts as &$post) {
+            $date = date_create_from_format('U', $post->created_at);
+            $post->created_at = $date->format('h:i d.m.Y');
+        }
+        return $rawPosts;
 
     }
 
