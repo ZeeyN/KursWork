@@ -35,28 +35,18 @@ class Post
 //todo Сделать CRUD с добавлением в базу
 //todo Сделать вывод древа сообщений (parent_id !== NULL)
 
+    /**
+     * @return string
+     */
+    public function getTableName()
+    {
+        return $this->table;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /**
+     * @param $id
+     * @return array
+     */
     public function getById($id)
     {
         $database = Includes::get_database();

@@ -37,7 +37,7 @@ $parentPost = !empty($parentId) ? array_shift($post->formatOutput()) : null;
     ?>
     <div id="ajaxCreateItem">
         <form action="" class="new-modal__form new-modal__form_width" >
-            <input type="hidden" name="formid" value="NewAuthorForm">
+            <input type="hidden" name="parent_id" value="<?= $parentId ?? NULL ?>">
             <label class="new-modal__label">
                 <input class="new-modal__input" name="post_name" type="text" required placeholder="Имя">
             </label>
