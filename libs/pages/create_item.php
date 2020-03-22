@@ -5,17 +5,13 @@ use ZeeyN\Core\Includes;
 $post = Includes::get_post_controller();
 
 $parentId   = isset($_GET['id']) ? $_GET['id'] : null;
-$parentPost = !empty($parentId) ? array_shift($post->formatOutput()) : null;
-//var_dump($parentPost);
+$parentPost = !empty($parentId) ? array_shift($post->getById($parentId)) : null;
 
-//TODO Сделать создание новых статей
 
 ?>
 <div class="container">
     <!--    <div class="m-page">-->
-    <?php
-    if (isset($parentId)):
-        ?>
+    <?php if (isset($parentId)): ?>
         <label for="author">Автор:
             <br>
             <span id="author">
@@ -32,9 +28,7 @@ $parentPost = !empty($parentId) ? array_shift($post->formatOutput()) : null;
         </label>
 
 
-    <?php
-    endif
-    ?>
+    <?php endif ?>
     <div id="ajaxCreateItem">
         <form action="" class="new-modal__form new-modal__form_width" >
             <input type="hidden" name="parent_id" value="<?= $parentId ?? NULL ?>">

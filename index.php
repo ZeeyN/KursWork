@@ -1,16 +1,11 @@
 <?php
-session_start();
 $lastUrl = $_GET['q'];
 unset($_GET['q']);
-//echo '<pre>';
-//var_dump($lastUrl);
-//echo '</pre>';
 require_once('vendor/autoload.php');
 
 
 if($lastUrl === 'AjaxController.php'){
     include 'libs/pages/AjaxController.php';
-    exit();
 }
 
 $rdi = new RecursiveDirectoryIterator('libs/pages');
