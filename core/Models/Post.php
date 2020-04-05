@@ -35,6 +35,32 @@ class Post
 //todo Сделать CRUD с добавлением в базу
 //todo Сделать вывод древа сообщений (parent_id !== NULL)
 
+    public function createPost($data){
+        $database = Includes::get_database();
+        $postTitle = isset($data['post_title']) ? $this->cleanValue($data['post_title']) : NULL;
+        $postAuthor = isset($data['post_author']) ? $this->cleanValue($data['post_author']) : NULL;
+        $postBody = isset($data['post_body']) ? $this->cleanValue($data['post_body']) : NULL;
+        $parentId = (int)$data['parent_id'];
+        $sql = 'INSERT INTO ' . $this->getTableName() . '(parent_id, post_title, post_author, post_body, created_at)';
+        $sql .= ' VALUES(\'' . $parentId . '\',\'' . $postTitle . '\',\'' . $postAuthor . '\',\'' . $postBody .'\',\'' . time() . '\')';
+        if($database->query($sql)) {
+            return $database->lastId();
+        } else {
+            return false;
+        }
+    }
+
+
+    public function cleanValue($value)
+    {
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = strip_tags($value);
+        $value = htmlspecialchars($value);
+        return $value;
+    }
+
+
     /**
      * @return string
      */
@@ -67,9 +93,7 @@ class Post
         $database = Includes::get_database();
         $sql = "SELECT * FROM posts";
         $result = $database->query($sql);
-
         $data = $this->parseResult($result);
-
 
         return $data;
     }
@@ -113,5 +137,23 @@ class Post
         }
 
         return $data;
+    }
+
+    public  function manageDate($data)
+    {
+        foreach ($data as &$item) {
+            $date = date_create_from_format('U', $item->created_at);
+            $item->created_at = $date->format('H:i d.m.Y');
+        }
+        return $data;
+    }
+
+
+    public function getPostMessages($id) {
+        $database = Includes::get_database();
+        $sql = 'SELECT * FROM ' . $this->getTableName() . ' WHERE `parent_id` = ' . $id;
+        $data =  $this->parseResult($database->query($sql));
+        return $this->manageDate($data);
+
     }
 }

@@ -48,17 +48,27 @@ class Database
     public function query($sql)
     {
         $result = $this->db->query($sql);
-        $this->confirmQuery($result);
-        return $result;
+        return $this->confirmQuery($result);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function lastId()
+    {
+        return $this->db->insert_id;
     }
 
     /**
      * @param $query
+     * @return bool|string
      */
     public function confirmQuery($query)
     {
-        if(!$query){
-            die('Query failed ' . $this->db->error );
+        if($query){
+            return $query;
+        } else {
+            return NULL;
         }
     }
 }

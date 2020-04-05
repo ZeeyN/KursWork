@@ -213,3 +213,23 @@ $(document).ready(function(){
         .parent()
         .zoom();
 });
+
+
+$(document).on('click', '#ajaxCreateItem #backButton', function(e){
+    e.preventDefault();
+    window.location.href = $(this).data('href');
+});
+
+$(window).scroll(function (){
+    if ($(this).scrollTop() > 450){
+        $("#up").fadeIn();
+    } else{
+        $("#up").fadeOut();
+    }
+});
+$("#up").click(function (){
+    $("body,html").animate({
+        scrollTop:0
+    }, 600);
+    return false;
+});

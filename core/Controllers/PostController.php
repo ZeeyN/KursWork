@@ -15,16 +15,20 @@ class PostController extends Post
 
         foreach($rawPosts as &$post) {
             $date = date_create_from_format('U', $post->created_at);
-            $post->created_at = $date->format('h:i d.m.Y');
+            $post->created_at = $date->format('H:i d.m.Y');
         }
         return $rawPosts;
 
     }
 
 
-
-    public function getPostChilds($postId)
+    public function outputMessages($postId)
     {
-        $data = $this->getDataByParentId($postId);
+        $messages = $this->getPostMessages($postId);
+        foreach($messages as &$message) {
+            $message->childs = $this->getPostMessages($message->id);
+        }
+        return $messages;
     }
+
 }
