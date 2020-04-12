@@ -23,7 +23,7 @@ $parentId   = isset($parentId) ? $parentId : 0;
 ?>
 <div class="container">
     <!--    <div class="m-page">-->
-    <?php if (isset($parentId)): ?>
+    <?php if (!empty($parentId)): ?>
         <label for="author">Автор:
             <br>
             <span id="author">

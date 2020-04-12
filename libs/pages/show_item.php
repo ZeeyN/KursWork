@@ -10,7 +10,7 @@ $parentPost = array_shift($post->manageDate($post->getById($_GET['id'])));
 <div class="container">
     <!--    <div>-->
     <label for="answer">
-        <a class="answer" href="create_item.php?id=<?= $parentPost->id ?>" id="answer">Ответить</a>
+        <a class="answer" href="create_item.php?id=<?= $parentPost->id ?>&backTo=<?= $parentPost->id?>" id="answer">Ответить</a>
     </label>
     <label for="author">Автор:
         <br>
