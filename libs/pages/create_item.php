@@ -51,7 +51,7 @@ $parentId   = isset($parentId) ? $parentId : 0;
                 <input class="new-modal__input" name="post_author" type="text" required placeholder="Имя">
             </label>
             <?php
-            if (!isset($parentId)):
+            if (empty($parentId)):
                 ?>
                 <label class="new-modal__label">
                     <input class="new-modal__input" name="post_title" type="text" required placeholder="Оглавление">
